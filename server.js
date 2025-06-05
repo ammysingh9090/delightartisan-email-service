@@ -30,7 +30,7 @@ app.post('/api/send-email', async (req, res) => {
 
     const info = await transporter.sendMail({
       from: `"Contact Form" <${process.env.MAIL_USERNAME}>`,
-      to: email,
+      to: process.env.MAIL_FROM_ADDRESS,
       subject: `New message from ${name}`,
       html: `
         <p><strong>Name:</strong> ${name}</p>
