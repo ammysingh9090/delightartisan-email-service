@@ -21,10 +21,10 @@ const transporter = nodemailer.createTransport({
 
 app.post('/api/send-email', async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { name, email, phone, message,service } = req.body;
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !service) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
@@ -37,6 +37,8 @@ app.post('/api/send-email', async (req, res) => {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
         <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Service:</strong> ${service}</p>
+
       `
     });
     
